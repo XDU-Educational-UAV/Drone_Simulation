@@ -19,24 +19,40 @@ function [F, M] = controller(t, state, des_state, params)
 % =================== Your code goes here ===================
 pDes = 0; %Desired roll velocity
 qDes = 0; %Desired pitch velocity
+global Kp_x;
+global Kd_x;
 
-Kp_x = 200; %6;%10; %6; %10;
-Kd_x = 15; %6; %6; %10;
+global Kp_y;
+global Kd_y;
 
-Kp_y = Kp_x;
-Kd_y = Kd_x;
+global Kp_z;
+global Kd_z;
 
-Kp_z = 200; %400;
-Kd_z = 15; %15; %13; %20;
+global Kp_phi;
+global Kd_phi;
 
-Kp_phi = 20; %100;%0.0203; %1000;
-Kd_phi = 0.5; %2; %0.004; % 25;
+global Kp_theta;
+global Kd_theta;
 
-Kp_theta = Kp_phi;
-Kd_theta = Kd_phi;
-
-Kp_psi = 20; %100; %100; %5;
-Kd_psi = 0.5; %2; %2; %5;
+global Kp_psi;
+global Kd_psi;
+% Kp_x = 200; %6;%10; %6; %10;
+% Kd_x = 15; %6; %6; %10;
+% 
+% Kp_y = Kp_x;
+% Kd_y = Kd_x;
+% 
+% Kp_z = 200; %400;
+% Kd_z = 15; %15; %13; %20;
+% 
+% Kp_phi = 20; %100;%0.0203; %1000;
+% Kd_phi = 0.5; %2; %0.004; % 25;
+% 
+% Kp_theta = Kp_phi;
+% Kd_theta = Kd_phi;
+% 
+% Kp_psi = 20; %100; %100; %5;
+% Kd_psi = 0.5; %2; %2; %5;
 
 r1CommAcc = des_state.acc(1) + Kd_x*(des_state.vel(1) - state.vel(1)) + Kp_x*(des_state.pos(1) - state.pos(1));
 r2CommAcc = des_state.acc(2) + Kd_y*(des_state.vel(2) - state.vel(2)) + Kp_y*(des_state.pos(2) - state.pos(2));
